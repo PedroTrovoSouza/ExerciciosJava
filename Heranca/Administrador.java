@@ -1,3 +1,5 @@
+package Heranca;
+
 public class Administrador extends Empregado{
     private double ajudaDeCusto;
 

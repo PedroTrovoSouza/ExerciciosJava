@@ -1,3 +1,5 @@
+package Heranca;
+
 public class Operario extends Empregado {
     private double valorProducao;
     private double comissao;

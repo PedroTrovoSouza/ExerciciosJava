@@ -1,3 +1,5 @@
+package Heranca;
+
 public class Empregado {
     private int codigoSetor;
     private double salarioBase;

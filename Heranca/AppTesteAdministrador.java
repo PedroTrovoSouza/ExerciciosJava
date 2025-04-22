@@ -1,3 +1,5 @@
+package Heranca;
+
 public class AppTesteAdministrador {
     public static void main(String[] args) {
         Administrador administrador = new Administrador();

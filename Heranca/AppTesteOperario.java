@@ -1,3 +1,5 @@
+package Heranca;
+
 public class AppTesteOperario {
     public static void main(String[] args) {
         Operario operario = new Operario();

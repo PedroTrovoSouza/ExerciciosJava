@@ -1,3 +1,5 @@
+package Heranca;
+
 public class AppTesteEmpregado {
     public static void main(String[] args) {
         Empregado empregado = new Empregado();
