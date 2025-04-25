@@ -7,11 +7,10 @@ public class AcessoBancoNovo {
     private Connection connection;
 
     public AcessoBancoNovo() {
-
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
             connection = (Connection) DriverManager
-                    .getConnection("jdbc:mysql://localhost:3306/banconovo?useSSL=false", "root", "Semsenha13");
+                    .getConnection("jdbc:mysql://localhost:3306/banconovo?useSSL=false", "root", "Jolau2077$");
             System.out.println("Conexão estabelecida!!");
         } catch (ClassNotFoundException cnfe) {
             System.out.println("Erro Driver Jdbc!" + cnfe.getLocalizedMessage());
@@ -99,6 +98,4 @@ public class AcessoBancoNovo {
         prep.setInt(1, id);
         prep.executeUpdate();
     }
-
-
 }
