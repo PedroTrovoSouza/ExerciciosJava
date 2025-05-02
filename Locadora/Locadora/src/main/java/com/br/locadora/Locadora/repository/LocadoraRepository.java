@@ -1,4 +1,8 @@
 package com.br.locadora.Locadora.repository;
 
-public interface LocadoraRepository {
+import com.br.locadora.Locadora.entity.Locacao;
+import org.springframework.data.jpa.repository.JpaRepository;
+
+public interface LocadoraRepository extends JpaRepository<Locacao, Float>{
+
 }
