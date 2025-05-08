@@ -6,7 +6,6 @@ import lombok.Getter;
 import lombok.Setter;
 
 import java.time.LocalDate;
-import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -15,28 +14,29 @@ import java.util.List;
 public class Locacao {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    long id;
+    private long id;
 
     @ManyToOne
-    Cliente cliente;
+    private Cliente cliente;
 
-    @OneToMany
-    private List<Filme> filme;
+    @ManyToOne
+    private Filme filme;
 
     @NotNull
     LocalDate dataLocacao;
 
-    @NotNull
     LocalDate dataDevolucao;
 
     @NotNull
-    private Boolean devolvido = true;
+    private Boolean devolvido = false;
 
-    public Boolean getDevolvido() {
-        return devolvido;
+    public Locacao(){
+
     }
 
-    public void setDevolvido(Boolean devolvido) {
-        this.devolvido = devolvido;
+    public Locacao(Cliente cliente, Filme filme) {
+        this.cliente = cliente;
+        this.filme = filme;
+        this.dataLocacao = LocalDate.now();
     }
 }
