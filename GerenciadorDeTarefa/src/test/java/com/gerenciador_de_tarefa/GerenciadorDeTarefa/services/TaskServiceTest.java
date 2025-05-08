@@ -8,6 +8,7 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
+import org.mockito.BDDMockito;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
@@ -64,7 +65,14 @@ public class TaskServiceTest {
     }
 
     @Test
-    void updateTask() throws Exception{
+    void updateTask() {
+        long id = 1L;
+        Task teskExistente = new Task(taskDTO);
 
+        given(taskRepository.findById(id)).willReturn(Optional.of(teskExistente));
+
+        taskService.editarTask(taskDTO, id);
+
+        BDDMockito.then(taskRepository).should().save(teskExistente);
     }
 }
