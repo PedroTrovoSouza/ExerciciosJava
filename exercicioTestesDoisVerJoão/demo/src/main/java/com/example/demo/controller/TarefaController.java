@@ -28,8 +28,12 @@ public class TarefaController {
     }
 
     @PostMapping
-    public ResponseEntity<TarefaResponseDTO> cadastrar(@RequestBody TarefaRequestDTO tarefa) {
-        return ResponseEntity.status(201).body(service.salvar(tarefa));
+    public ResponseEntity<String> cadastrar(@RequestBody TarefaRequestDTO tarefa) {
+        TarefaResponseDTO tarefaCadastrar = service.salvar(tarefa);
+
+        String resposta = "Tarefa adicionada: %s".formatted(tarefaCadastrar.getNome());
+
+        return ResponseEntity.status(201).body(resposta);
     }
 
     @DeleteMapping("/{nome}")
