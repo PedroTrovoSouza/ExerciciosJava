@@ -4,7 +4,7 @@ import com.example.demo.dto.TarefaRequestDTO;
 import com.example.demo.dto.TarefaResponseDTO;
 import com.example.demo.entity.Tarefa;
 import com.example.demo.exception.TarefaInvalidaException;
-import com.example.demo.mapper.TarefaMapper;
+import com.example.demo.mapper.TaskMapper;
 import com.example.demo.repository.TarefaRepository;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
@@ -25,7 +25,7 @@ class TarefaServiceTest {
     private TarefaRepository repository;
 
     @Mock
-    private TarefaMapper mapper;
+    private TaskMapper mapper;
 
     @InjectMocks
     private TarefaService service;

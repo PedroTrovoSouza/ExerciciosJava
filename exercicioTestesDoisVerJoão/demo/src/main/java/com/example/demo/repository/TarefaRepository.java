@@ -9,5 +9,7 @@ import java.util.Optional;
 @Repository
 public interface TarefaRepository extends JpaRepository<Tarefa, Long> {
 
-    Optional<Tarefa> findTarefaByNomeEqualsIgnoreCase(String nome);
+    Optional<Tarefa> findByNomeEqualsIgnoreCase(String nome);
+
+    void deleteByNomeEqualsIgnoreCase(String nome);
 }

@@ -4,12 +4,11 @@ import com.example.demo.dto.TarefaRequestDTO;
 import com.example.demo.dto.TarefaResponseDTO;
 import com.example.demo.entity.Tarefa;
 import com.example.demo.exception.TarefaInvalidaException;
-import com.example.demo.mapper.TarefaMapper;
+import com.example.demo.mapper.TaskMapper;
 import com.example.demo.repository.TarefaRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import javax.swing.text.html.Option;
 import java.util.List;
 import java.util.Optional;
 
@@ -20,7 +19,7 @@ public class TarefaService {
     private TarefaRepository repository;
 
     @Autowired
-    private TarefaMapper mapper;
+    private TaskMapper mapper;
 
     public List<TarefaResponseDTO> listarTodasTarefas() {
         List<Tarefa> tarefas = repository.findAll();
@@ -42,12 +41,12 @@ public class TarefaService {
 
     public String deletarPorNome (String nome) {
         if (nome == null || nome.isBlank() || nome.isEmpty()) {
-            throw new TarefaInvalidaException("ID inválido.");
+            throw new TarefaInvalidaException("Nome inválido.");
         }
-        Optional<Tarefa> tarefaDeletar = repository.findTarefaByNomeEqualsIgnoreCase(nome);
+        Optional<Tarefa> tarefaDeletar = repository.findByNomeEqualsIgnoreCase(nome);
 
         if (tarefaDeletar.isPresent()) {
-            repository.deleteById(tarefaDeletar.get().getId());
+            repository.deleteByNomeEqualsIgnoreCase(nome);
             return "Tarefa removida: %s".formatted(tarefaDeletar.get().getNome());
         }
         return " ";
