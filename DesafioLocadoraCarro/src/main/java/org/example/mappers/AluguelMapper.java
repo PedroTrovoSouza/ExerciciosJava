@@ -2,6 +2,7 @@ package org.example.mappers;
 
 import org.example.DTO.AluguelRequestDTO;
 import org.example.DTO.AluguelResponseDTO;
+import org.example.DTO.MotoristaResponseDTO;
 import org.example.entity.Aluguel;
 import org.example.repository.ApoliceSeguroRepository;
 import org.example.repository.MotoristaRepository;
@@ -39,10 +40,23 @@ public class AluguelMapper {
 
     public AluguelResponseDTO toDTO(Aluguel aluguel) {
         AluguelResponseDTO dto = new AluguelResponseDTO();
-        dto.setDataPedido(aluguel.getDataPedido().getTime());
+
+        dto.setId(aluguel.getId());
+        dto.setDataPedido(aluguel.getDataPedido() != null ? aluguel.getDataPedido().getTime() : null);
         dto.setDataEntrega(aluguel.getDataEntrega());
         dto.setDataDevolucao(aluguel.getDataDevolucao());
-        aluguel.setValorTotal(aluguel.getValorTotal());
+        dto.setValorTotal(aluguel.getValorTotal());
+
+        if (aluguel.getMotorista() != null) {
+            MotoristaResponseDTO motoristaDTO = new MotoristaResponseDTO();
+            motoristaDTO.setId(aluguel.getMotorista().getId());
+            motoristaDTO.setNome(aluguel.getMotorista().getNome());
+            motoristaDTO.setDataNascimento(aluguel.getMotorista().getDataNascimento());
+            motoristaDTO.setCpf(aluguel.getMotorista().getCpf());
+            motoristaDTO.setNumeroCNH(aluguel.getMotorista().getNumeroCNH());
+            motoristaDTO.setEmail(aluguel.getMotorista().getEmail());
+            dto.setMotorista(motoristaDTO);
+        }
 
         return dto;
     }

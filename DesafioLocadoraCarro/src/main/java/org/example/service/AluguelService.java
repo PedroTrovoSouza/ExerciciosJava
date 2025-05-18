@@ -34,7 +34,7 @@ public class AluguelService {
 
         Aluguel aluguel = mapper.toEntity(dto);
         Aluguel aluguelSalvo = repository.save(aluguel);
-        aluguel.setCarrinho(true);
+        aluguelSalvo.setCarrinho(true);
 
         return mapper.toDTO(aluguelSalvo);
     }
